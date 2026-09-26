@@ -1,0 +1,1587 @@
+/* ==========================================================================
+   ОСНОВНЫЕ СТИЛИ ВЕБ-ПРИЛОЖЕНИЯ: СТУДИЯ ТАНЦЕВ «BLACK HEART DANCE HOUSE»
+   г. Минск, ул. Притыцкого, 62/м (ст. м. Кунцевщина / Спортивная)
+   Стратегия разработки: Mobile First
+   Сетка: CSS Flexbox
+   Единицы измерения: относительные (rem, em, %, vw, vh)
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. CSS-переменные (Custom Properties)
+   -------------------------------------------------------------------------- */
+:root {
+    --bg-main: #0D0D0D;
+    --bg-surface: #161616;
+    --bg-card: #1C1C1C;
+    --bg-card-hover: #242424;
+    --bg-subtle: #2A2A2A;
+    
+    --color-text-main: #FFFFFF;
+    --color-text-muted: #A0A0A0;
+    --color-text-dim: #707070;
+    
+    --accent-pink: #FF2A7A;
+    --accent-pink-light: #FFB1D8;
+    --accent-pink-glow: rgba(255, 42, 122, 0.35);
+    --accent-dark-pink: #C2185B;
+    
+    --accent-purple: #8A2BE2;
+    --accent-gold: #FFD700;
+    --accent-emerald: #00E676;
+    
+    --border-subtle: rgba(255, 177, 216, 0.15);
+    --border-accent: rgba(255, 42, 122, 0.5);
+    
+    --radius-sm: 0.5rem;
+    --radius-md: 0.875rem;
+    --radius-lg: 1.25rem;
+    --radius-full: 9999px;
+    
+    --shadow-soft: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.4);
+    --shadow-glow: 0 0.5rem 2rem rgba(255, 42, 122, 0.25);
+    
+    --transition-fast: 0.2s ease;
+    --transition-norm: 0.3s ease;
+}
+
+/* --------------------------------------------------------------------------
+   2. Базовая типографика и контейнеры
+   -------------------------------------------------------------------------- */
+body {
+    background-color: var(--bg-main);
+    color: var(--color-text-main);
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    font-size: 1rem;
+    line-height: 1.5;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.container {
+    width: 100%;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+
+.section {
+    padding-top: 2.5rem;
+    padding-bottom: 2.5rem;
+}
+
+.section-title {
+    font-size: 1.6rem;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    margin-bottom: 0.5rem;
+    color: var(--color-text-main);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.section-title::before {
+    content: '';
+    display: inline-block;
+    width: 0.3rem;
+    height: 1.4rem;
+    background: linear-gradient(180deg, var(--accent-pink), var(--accent-pink-light));
+    border-radius: var(--radius-full);
+}
+
+.section-subtitle {
+    color: var(--color-text-muted);
+    font-size: 0.925rem;
+    margin-bottom: 1.5rem;
+}
+
+/* --------------------------------------------------------------------------
+   3. Навигационная шапка (Header & Nav) — Flexbox Mobile First
+   -------------------------------------------------------------------------- */
+.site-header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background: rgba(13, 13, 13, 0.92);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border-subtle);
+    padding: 0.75rem 1rem;
+}
+
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.logo-link {
+    display: flex;
+    align-items: center;
+    gap: 0.65rem;
+    text-decoration: none;
+}
+
+.logo-badge {
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: var(--radius-sm);
+    background: linear-gradient(135deg, var(--accent-pink), #2D0A1E);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.25rem;
+    box-shadow: 0 0 12px var(--accent-pink-glow);
+    border: 1px solid var(--accent-pink-light);
+    overflow: hidden;
+}
+
+.logo-badge img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.logo-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.logo-title {
+    font-size: 1.05rem;
+    font-weight: 800;
+    letter-spacing: 0.04em;
+    color: var(--color-text-main);
+    line-height: 1.1;
+}
+
+.logo-subtitle {
+    font-size: 0.7rem;
+    color: var(--accent-pink-light);
+    font-weight: 500;
+    letter-spacing: 0.02em;
+}
+
+/* Бургер-кнопка для мобильных */
+.burger-btn {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 2.25rem;
+    height: 2.25rem;
+    padding: 0.35rem;
+    background: var(--bg-surface);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    z-index: 1002;
+}
+
+.burger-line {
+    width: 100%;
+    height: 2px;
+    background-color: var(--color-text-main);
+    border-radius: 2px;
+    transition: var(--transition-fast);
+}
+
+.burger-btn.active .burger-line:nth-child(1) {
+    transform: translateY(6px) rotate(45deg);
+}
+.burger-btn.active .burger-line:nth-child(2) {
+    opacity: 0;
+}
+.burger-btn.active .burger-line:nth-child(3) {
+    transform: translateY(-6px) rotate(-45deg);
+}
+
+/* Мобильное всплывающее меню */
+.nav-menu {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 82%;
+    max-width: 320px;
+    height: 100vh;
+    background: #141414;
+    border-left: 1px solid var(--border-subtle);
+    display: flex;
+    flex-direction: column;
+    padding: 5rem 1.5rem 2rem;
+    gap: 1.25rem;
+    transition: right var(--transition-norm);
+    box-shadow: -0.5rem 0 2rem rgba(0, 0, 0, 0.7);
+    z-index: 1001;
+}
+
+.nav-menu.open {
+    right: 0;
+}
+
+.nav-link {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--color-text-muted);
+    padding: 0.6rem 0.5rem;
+    border-radius: var(--radius-sm);
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    transition: var(--transition-fast);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.nav-link:hover, .nav-link.active {
+    color: var(--color-text-main);
+    background: rgba(255, 42, 122, 0.12);
+    border-bottom-color: var(--accent-pink);
+}
+
+.nav-cta-btn {
+    margin-top: auto;
+    background: linear-gradient(135deg, var(--accent-pink), var(--accent-dark-pink));
+    color: #FFFFFF;
+    font-weight: 700;
+    font-size: 0.95rem;
+    padding: 0.85rem 1.25rem;
+    border-radius: var(--radius-md);
+    text-align: center;
+    box-shadow: var(--shadow-glow);
+    transition: var(--transition-fast);
+}
+
+.nav-cta-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 0.75rem 2.5rem rgba(255, 42, 122, 0.4);
+}
+
+.nav-backdrop {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.65);
+    z-index: 1000;
+}
+
+.nav-backdrop.open {
+    display: block;
+}
+
+/* --------------------------------------------------------------------------
+   4. Главный Hero-баннер — Flexbox
+   -------------------------------------------------------------------------- */
+.hero-section {
+    position: relative;
+    padding: 2.5rem 1rem 3rem;
+    background: radial-gradient(circle at 80% 20%, rgba(255, 42, 122, 0.15) 0%, transparent 60%),
+                linear-gradient(180deg, #161616 0%, #0D0D0D 100%);
+    border-bottom: 1px solid var(--border-subtle);
+}
+
+.hero-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.hero-content {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.hero-badge-pill {
+    align-self: flex-start;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: rgba(255, 42, 122, 0.15);
+    border: 1px solid var(--border-accent);
+    padding: 0.35rem 0.85rem;
+    border-radius: var(--radius-full);
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: var(--accent-pink-light);
+    letter-spacing: 0.03em;
+}
+
+.hero-title {
+    font-size: 2.1rem;
+    font-weight: 900;
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+}
+
+.hero-title span {
+    background: linear-gradient(135deg, var(--accent-pink-light), var(--accent-pink));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.hero-description {
+    font-size: 0.95rem;
+    color: var(--color-text-muted);
+    line-height: 1.6;
+}
+
+.hero-address-card {
+    display: flex;
+    align-items: center;
+    gap: 0.85rem;
+    background: var(--bg-surface);
+    border: 1px solid var(--border-subtle);
+    padding: 0.85rem 1rem;
+    border-radius: var(--radius-md);
+    margin-top: 0.5rem;
+}
+
+.hero-address-icon {
+    font-size: 1.5rem;
+    color: var(--accent-pink);
+}
+
+.hero-address-text strong {
+    display: block;
+    font-size: 0.9rem;
+    color: var(--color-text-main);
+}
+
+.hero-address-text span {
+    font-size: 0.775rem;
+    color: var(--color-text-muted);
+}
+
+.hero-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    margin-top: 0.5rem;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, var(--accent-pink), var(--accent-dark-pink));
+    color: #FFFFFF;
+    font-weight: 700;
+    font-size: 1rem;
+    padding: 0.9rem 1.5rem;
+    border-radius: var(--radius-md);
+    text-align: center;
+    box-shadow: var(--shadow-glow);
+    transition: var(--transition-fast);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 0.75rem 2.5rem rgba(255, 42, 122, 0.45);
+}
+
+.btn-secondary {
+    background: var(--bg-surface);
+    color: var(--color-text-main);
+    border: 1px solid var(--border-subtle);
+    font-weight: 600;
+    font-size: 0.95rem;
+    padding: 0.85rem 1.5rem;
+    border-radius: var(--radius-md);
+    text-align: center;
+    transition: var(--transition-fast);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+.btn-secondary:hover {
+    background: var(--bg-subtle);
+    border-color: var(--accent-pink-light);
+}
+
+.hero-visual {
+    position: relative;
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    box-shadow: var(--shadow-soft);
+    border: 1px solid var(--border-subtle);
+}
+
+.hero-visual img {
+    width: 100%;
+    height: 16rem;
+    object-fit: cover;
+    display: block;
+    transition: transform var(--transition-norm);
+}
+
+.hero-visual:hover img {
+    transform: scale(1.03);
+}
+
+.hero-visual-floating-badge {
+    position: absolute;
+    bottom: 1rem;
+    left: 1rem;
+    right: 1rem;
+    background: rgba(18, 18, 18, 0.88);
+    backdrop-filter: blur(8px);
+    border: 1px solid var(--border-accent);
+    padding: 0.75rem 1rem;
+    border-radius: var(--radius-md);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.floating-badge-item {
+    display: flex;
+    flex-direction: column;
+}
+
+.floating-badge-value {
+    font-size: 1.1rem;
+    font-weight: 800;
+    color: var(--accent-pink-light);
+}
+
+.floating-badge-label {
+    font-size: 0.7rem;
+    color: var(--color-text-muted);
+}
+
+/* --------------------------------------------------------------------------
+   5. Фильтры каталога (Category Pills) — Flexbox
+   -------------------------------------------------------------------------- */
+.filter-bar {
+    display: flex;
+    gap: 0.5rem;
+    overflow-x: auto;
+    padding-bottom: 0.75rem;
+    margin-bottom: 1.5rem;
+    scrollbar-width: thin;
+    -webkit-overflow-scrolling: touch;
+}
+
+.filter-btn {
+    white-space: nowrap;
+    padding: 0.55rem 1.15rem;
+    border-radius: var(--radius-full);
+    background: var(--bg-surface);
+    border: 1px solid var(--border-subtle);
+    color: var(--color-text-muted);
+    font-size: 0.85rem;
+    font-weight: 600;
+    transition: var(--transition-fast);
+    flex-shrink: 0;
+}
+
+.filter-btn:hover, .filter-btn.active {
+    background: var(--accent-pink);
+    color: #FFFFFF;
+    border-color: var(--accent-pink);
+    box-shadow: 0 0.25rem 1rem var(--accent-pink-glow);
+}
+
+/* --------------------------------------------------------------------------
+   6. Карточки направлений танцев — Flexbox Mobile First
+   -------------------------------------------------------------------------- */
+.cards-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.dance-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: transform var(--transition-norm), border-color var(--transition-norm), box-shadow var(--transition-norm);
+}
+
+.dance-card:hover {
+    transform: translateY(-4px);
+    border-color: var(--border-accent);
+    box-shadow: var(--shadow-glow);
+}
+
+.card-img-wrapper {
+    position: relative;
+    width: 100%;
+    height: 13rem;
+    overflow: hidden;
+}
+
+.card-img-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+}
+
+.dance-card:hover .card-img-wrapper img {
+    transform: scale(1.05);
+}
+
+.card-tag {
+    position: absolute;
+    top: 0.75rem;
+    left: 0.75rem;
+    background: rgba(13, 13, 13, 0.82);
+    backdrop-filter: blur(6px);
+    border: 1px solid var(--accent-pink);
+    color: var(--accent-pink-light);
+    font-size: 0.725rem;
+    font-weight: 700;
+    padding: 0.25rem 0.65rem;
+    border-radius: var(--radius-full);
+}
+
+.card-level {
+    position: absolute;
+    top: 0.75rem;
+    right: 0.75rem;
+    background: rgba(0, 0, 0, 0.75);
+    color: #FFFFFF;
+    font-size: 0.7rem;
+    font-weight: 600;
+    padding: 0.25rem 0.6rem;
+    border-radius: var(--radius-sm);
+}
+
+.card-body {
+    padding: 1.25rem;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    gap: 0.75rem;
+}
+
+.card-title {
+    font-size: 1.25rem;
+    font-weight: 800;
+    color: var(--color-text-main);
+    line-height: 1.2;
+}
+
+.card-desc {
+    font-size: 0.875rem;
+    color: var(--color-text-muted);
+    line-height: 1.5;
+    flex-grow: 1;
+}
+
+.card-trainer {
+    display: flex;
+    align-items: center;
+    gap: 0.65rem;
+    background: var(--bg-surface);
+    padding: 0.5rem 0.75rem;
+    border-radius: var(--radius-sm);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.trainer-avatar {
+    width: 2.2rem;
+    height: 2.2rem;
+    border-radius: var(--radius-full);
+    border: 1px solid var(--accent-pink);
+    object-fit: cover;
+}
+
+.trainer-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.trainer-name {
+    font-size: 0.825rem;
+    font-weight: 700;
+    color: var(--color-text-main);
+}
+
+.trainer-role {
+    font-size: 0.7rem;
+    color: var(--color-text-muted);
+}
+
+.card-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 0.75rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.card-price-box {
+    display: flex;
+    flex-direction: column;
+}
+
+.card-price-label {
+    font-size: 0.7rem;
+    color: var(--color-text-dim);
+}
+
+.card-price-val {
+    font-size: 1.25rem;
+    font-weight: 800;
+    color: var(--accent-pink-light);
+}
+
+.card-price-val span {
+    font-size: 0.85rem;
+    color: var(--color-text-muted);
+}
+
+.btn-card-action {
+    background: rgba(255, 42, 122, 0.15);
+    border: 1px solid var(--accent-pink);
+    color: #FFFFFF;
+    font-size: 0.85rem;
+    font-weight: 700;
+    padding: 0.55rem 1rem;
+    border-radius: var(--radius-sm);
+    transition: var(--transition-fast);
+    text-align: center;
+}
+
+.btn-card-action:hover {
+    background: var(--accent-pink);
+    box-shadow: 0 0.25rem 1rem var(--accent-pink-glow);
+}
+
+/* --------------------------------------------------------------------------
+   7. Интерактивное расписание (Schedule) — Flexbox
+   -------------------------------------------------------------------------- */
+.schedule-days-bar {
+    display: flex;
+    gap: 0.4rem;
+    overflow-x: auto;
+    padding-bottom: 0.75rem;
+    margin-bottom: 1.25rem;
+    scrollbar-width: thin;
+}
+
+.day-tab-btn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0.6rem 0.85rem;
+    background: var(--bg-surface);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-md);
+    min-width: 4rem;
+    transition: var(--transition-fast);
+}
+
+.day-tab-name {
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--color-text-muted);
+    text-transform: uppercase;
+}
+
+.day-tab-date {
+    font-size: 1.1rem;
+    font-weight: 800;
+    color: var(--color-text-main);
+}
+
+.day-tab-btn.active, .day-tab-btn:hover {
+    background: linear-gradient(135deg, var(--accent-pink), var(--accent-dark-pink));
+    border-color: var(--accent-pink);
+    box-shadow: 0 0.25rem 1rem var(--accent-pink-glow);
+}
+.day-tab-btn.active .day-tab-name, .day-tab-btn.active .day-tab-date {
+    color: #FFFFFF;
+}
+
+.schedule-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.85rem;
+}
+
+.schedule-row {
+    background: var(--bg-card);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-md);
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    transition: var(--transition-fast);
+}
+
+.schedule-row:hover {
+    border-color: var(--accent-pink-light);
+    background: var(--bg-card-hover);
+}
+
+.schedule-time-badge {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.time-val {
+    font-size: 1.15rem;
+    font-weight: 800;
+    color: var(--accent-pink-light);
+    letter-spacing: 0.02em;
+}
+
+.hall-badge {
+    font-size: 0.725rem;
+    background: rgba(255, 255, 255, 0.08);
+    padding: 0.2rem 0.6rem;
+    border-radius: var(--radius-full);
+    color: var(--color-text-muted);
+}
+
+.schedule-info {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.schedule-avatar {
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: var(--radius-full);
+    border: 1px solid var(--accent-pink);
+    object-fit: cover;
+}
+
+.schedule-meta {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.schedule-direction {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--color-text-main);
+}
+
+.schedule-coach {
+    font-size: 0.8rem;
+    color: var(--color-text-muted);
+}
+
+.schedule-action {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 0.5rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.spots-left {
+    font-size: 0.775rem;
+    color: var(--accent-emerald);
+    font-weight: 600;
+}
+
+/* --------------------------------------------------------------------------
+   8. Тарифная сетка и Абонементы (Pricing) — Flexbox
+   -------------------------------------------------------------------------- */
+.pricing-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+}
+
+.pricing-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-lg);
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    transition: var(--transition-norm);
+}
+
+.pricing-card.featured {
+    border-color: var(--accent-pink);
+    background: linear-gradient(180deg, rgba(255, 42, 122, 0.12) 0%, #1C1C1C 100%);
+    box-shadow: var(--shadow-glow);
+}
+
+.pricing-badge-popular {
+    position: absolute;
+    top: -0.65rem;
+    right: 1.5rem;
+    background: var(--accent-pink);
+    color: #FFFFFF;
+    font-size: 0.7rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    padding: 0.25rem 0.75rem;
+    border-radius: var(--radius-full);
+    letter-spacing: 0.05em;
+}
+
+.pricing-card-header {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+    margin-bottom: 1rem;
+}
+
+.pricing-name {
+    font-size: 1.2rem;
+    font-weight: 800;
+    color: var(--color-text-main);
+}
+
+.pricing-desc {
+    font-size: 0.8rem;
+    color: var(--color-text-muted);
+}
+
+.pricing-cost-box {
+    display: flex;
+    align-items: baseline;
+    gap: 0.35rem;
+    margin-bottom: 1.25rem;
+}
+
+.pricing-amount {
+    font-size: 2.2rem;
+    font-weight: 900;
+    color: var(--accent-pink-light);
+}
+
+.pricing-currency {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--color-text-muted);
+}
+
+.pricing-features {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    margin-bottom: 1.5rem;
+    flex-grow: 1;
+}
+
+.feature-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.85rem;
+    color: var(--color-text-main);
+}
+
+.feature-item::before {
+    content: '✓';
+    color: var(--accent-emerald);
+    font-weight: bold;
+}
+
+/* --------------------------------------------------------------------------
+   9. Интерактивный калькулятор абонемента — Flexbox
+   -------------------------------------------------------------------------- */
+.calc-box {
+    background: var(--bg-surface);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-lg);
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+}
+
+.calc-control-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.calc-label {
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--color-text-main);
+}
+
+.calc-chips {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+}
+
+.calc-chip-btn {
+    padding: 0.5rem 1rem;
+    background: var(--bg-card);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-md);
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--color-text-muted);
+    transition: var(--transition-fast);
+}
+
+.calc-chip-btn.active {
+    background: var(--accent-pink);
+    border-color: var(--accent-pink);
+    color: #FFFFFF;
+}
+
+.calc-result-box {
+    background: var(--bg-card);
+    border: 1px dashed var(--accent-pink);
+    border-radius: var(--radius-md);
+    padding: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.calc-result-label {
+    font-size: 0.85rem;
+    color: var(--color-text-muted);
+}
+
+.calc-result-val {
+    font-size: 1.6rem;
+    font-weight: 900;
+    color: var(--accent-pink-light);
+}
+
+/* --------------------------------------------------------------------------
+   10. Страница детализации (detail.html) — Стили
+   -------------------------------------------------------------------------- */
+.detail-top-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.85rem 1rem;
+    background: var(--bg-surface);
+    border-bottom: 1px solid var(--border-subtle);
+}
+
+.btn-back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 0.875rem;
+    font-weight: 700;
+    color: var(--accent-pink-light);
+    transition: var(--transition-fast);
+}
+
+.btn-back-link:hover {
+    color: #FFFFFF;
+}
+
+.detail-hero-banner {
+    position: relative;
+    width: 100%;
+    height: 18rem;
+    overflow: hidden;
+}
+
+.detail-hero-banner img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.detail-hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(13, 13, 13, 0.2) 0%, rgba(13, 13, 13, 0.95) 100%);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 1.5rem 1rem;
+}
+
+.detail-tags-row {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 0.5rem;
+    flex-wrap: wrap;
+}
+
+.detail-title {
+    font-size: 1.75rem;
+    font-weight: 900;
+    line-height: 1.2;
+    margin-bottom: 0.25rem;
+}
+
+.detail-specs-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    margin: 1.5rem 0;
+}
+
+.spec-box {
+    background: var(--bg-card);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-md);
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.85rem;
+}
+
+.spec-icon {
+    font-size: 1.5rem;
+    color: var(--accent-pink);
+}
+
+.spec-info h4 {
+    font-size: 0.8rem;
+    color: var(--color-text-muted);
+}
+
+.spec-info p {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--color-text-main);
+}
+
+/* Тренер на странице направления */
+.trainer-card-large {
+    background: var(--bg-card);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-lg);
+    padding: 1.25rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.trainer-header-row {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.trainer-avatar-large {
+    width: 4.5rem;
+    height: 4.5rem;
+    border-radius: var(--radius-full);
+    border: 2px solid var(--accent-pink);
+    object-fit: cover;
+}
+
+.trainer-large-info h3 {
+    font-size: 1.15rem;
+    font-weight: 800;
+}
+
+.trainer-large-info p {
+    font-size: 0.825rem;
+    color: var(--accent-pink-light);
+}
+
+/* Галерея зала на странице направления */
+.gallery-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.gallery-item {
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    height: 11rem;
+    border: 1px solid var(--border-subtle);
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s;
+}
+
+.gallery-item:hover img {
+    transform: scale(1.04);
+}
+
+/* --------------------------------------------------------------------------
+   11. Страница личного кабинета ученика (profile.html) — Стили
+   -------------------------------------------------------------------------- */
+.profile-card-header {
+    background: linear-gradient(135deg, #1F0D16 0%, #161616 100%);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-lg);
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 0.85rem;
+    margin-bottom: 1.5rem;
+    box-shadow: var(--shadow-soft);
+}
+
+.profile-avatar-box {
+    position: relative;
+    width: 5.5rem;
+    height: 5.5rem;
+}
+
+.profile-avatar-img {
+    width: 100%;
+    height: 100%;
+    border-radius: var(--radius-full);
+    border: 2px solid var(--accent-pink);
+    object-fit: cover;
+}
+
+.profile-badge-vip {
+    position: absolute;
+    bottom: -0.2rem;
+    right: -0.2rem;
+    background: var(--accent-gold);
+    color: #000000;
+    font-size: 0.65rem;
+    font-weight: 900;
+    padding: 0.15rem 0.45rem;
+    border-radius: var(--radius-full);
+}
+
+.profile-name {
+    font-size: 1.35rem;
+    font-weight: 800;
+}
+
+.profile-id-tag {
+    font-size: 0.75rem;
+    color: var(--accent-pink-light);
+    background: rgba(255, 42, 122, 0.12);
+    padding: 0.2rem 0.65rem;
+    border-radius: var(--radius-full);
+}
+
+/* Статистика ученика */
+.profile-stats-row {
+    display: flex;
+    gap: 0.75rem;
+    margin-bottom: 1.5rem;
+    overflow-x: auto;
+}
+
+.stat-widget {
+    flex: 1;
+    min-width: 6.5rem;
+    background: var(--bg-card);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-md);
+    padding: 0.85rem 0.75rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.stat-widget-num {
+    font-size: 1.35rem;
+    font-weight: 800;
+    color: var(--accent-pink-light);
+}
+
+.stat-widget-label {
+    font-size: 0.675rem;
+    color: var(--color-text-muted);
+}
+
+/* Цифровой QR-пропуск */
+.qr-pass-card {
+    background: var(--bg-surface);
+    border: 1px solid var(--border-accent);
+    border-radius: var(--radius-lg);
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+    box-shadow: var(--shadow-glow);
+}
+
+.qr-box {
+    width: 9rem;
+    height: 9rem;
+    background: #FFFFFF;
+    border-radius: var(--radius-md);
+    padding: 0.75rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.qr-box svg {
+    width: 100%;
+    height: 100%;
+}
+
+.qr-pass-title {
+    font-size: 1rem;
+    font-weight: 800;
+    color: var(--color-text-main);
+}
+
+.qr-pass-desc {
+    font-size: 0.775rem;
+    color: var(--color-text-muted);
+}
+
+/* --------------------------------------------------------------------------
+   12. Модальное окно записи и уведомления
+   -------------------------------------------------------------------------- */
+.modal-backdrop {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.75);
+    backdrop-filter: blur(4px);
+    z-index: 2000;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+}
+
+.modal-backdrop.open {
+    display: flex;
+}
+
+.modal-dialog {
+    background: #181818;
+    border: 1px solid var(--border-accent);
+    border-radius: var(--radius-lg);
+    width: 100%;
+    max-width: 440px;
+    padding: 1.75rem;
+    box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.8);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    animation: modalIn 0.25s ease-out;
+}
+
+@keyframes modalIn {
+    from { opacity: 0; transform: scale(0.95) translateY(10px); }
+    to { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+.modal-close-btn {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    font-size: 1.25rem;
+    color: var(--color-text-muted);
+    cursor: pointer;
+}
+
+.modal-form {
+    display: flex;
+    flex-direction: column;
+    gap: 0.85rem;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+}
+
+.form-label {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--color-text-muted);
+}
+
+.form-input {
+    background: var(--bg-card);
+    border: 1px solid var(--border-subtle);
+    padding: 0.75rem 1rem;
+    border-radius: var(--radius-sm);
+    color: #FFFFFF;
+    font-size: 0.9rem;
+    transition: var(--transition-fast);
+}
+
+.form-input:focus {
+    border-color: var(--accent-pink);
+    box-shadow: 0 0 0 2px var(--accent-pink-glow);
+}
+
+/* Всплывающий тост */
+.toast-msg {
+    position: fixed;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%) translateY(100px);
+    background: #181818;
+    border: 1px solid var(--accent-emerald);
+    color: #FFFFFF;
+    padding: 0.85rem 1.5rem;
+    border-radius: var(--radius-full);
+    font-size: 0.9rem;
+    font-weight: 600;
+    box-shadow: 0 0.5rem 2rem rgba(0, 0, 0, 0.7);
+    z-index: 3000;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    opacity: 0;
+    pointer-events: none;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.toast-msg.show {
+    transform: translateX(-50%) translateY(0);
+    opacity: 1;
+}
+
+/* --------------------------------------------------------------------------
+   13. Футер приложения (Footer) — Flexbox
+   -------------------------------------------------------------------------- */
+.site-footer {
+    background: #0A0A0A;
+    border-top: 1px solid var(--border-subtle);
+    padding: 2.5rem 1rem 1.5rem;
+    margin-top: auto;
+}
+
+.footer-content {
+    display: flex;
+    flex-direction: column;
+    gap: 1.75rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.footer-col {
+    display: flex;
+    flex-direction: column;
+    gap: 0.65rem;
+}
+
+.footer-title {
+    font-size: 1rem;
+    font-weight: 800;
+    color: var(--color-text-main);
+}
+
+.footer-links {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+}
+
+.footer-links a {
+    color: var(--color-text-muted);
+    font-size: 0.85rem;
+    transition: var(--transition-fast);
+}
+
+.footer-links a:hover {
+    color: var(--accent-pink-light);
+}
+
+.footer-bottom {
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    padding-top: 1.25rem;
+    margin-top: 1.25rem;
+    text-align: center;
+    font-size: 0.75rem;
+    color: var(--color-text-dim);
+}
+
+/* ==========================================================================
+   14. Медиа-запросы (CSS Media Queries) — Адаптация для планшетов и десктопов
+   ================================================-------------------------- */
+
+/* Планшеты (ширина от 768px) */
+@media (min-width: 768px) {
+    .burger-btn {
+        display: none;
+    }
+    
+    .nav-menu {
+        position: static;
+        width: auto;
+        max-width: none;
+        height: auto;
+        background: transparent;
+        border: none;
+        flex-direction: row;
+        align-items: center;
+        padding: 0;
+        gap: 1.5rem;
+        box-shadow: none;
+    }
+    
+    .nav-link {
+        font-size: 0.925rem;
+        padding: 0.4rem 0.75rem;
+        border-bottom: none;
+    }
+    
+    .nav-cta-btn {
+        margin-top: 0;
+        padding: 0.55rem 1.15rem;
+        font-size: 0.875rem;
+    }
+    
+    .hero-wrapper {
+        flex-direction: row;
+        align-items: center;
+    }
+    
+    .hero-content {
+        flex: 1;
+    }
+    
+    .hero-visual {
+        flex: 1;
+    }
+    
+    .hero-visual img {
+        height: 22rem;
+    }
+    
+    .hero-actions {
+        flex-direction: row;
+    }
+    
+    .cards-grid {
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+    
+    .dance-card {
+        flex: 0 0 calc(50% - 0.75rem);
+    }
+    
+    .schedule-row {
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+    }
+    
+    .schedule-time-badge {
+        flex: 0 0 8.5rem;
+    }
+    
+    .schedule-info {
+        flex: 1;
+    }
+    
+    .schedule-action {
+        padding-top: 0;
+        border-top: none;
+        flex: 0 0 11rem;
+        justify-content: flex-end;
+        gap: 1rem;
+    }
+    
+    .pricing-grid {
+        flex-direction: row;
+    }
+    
+    .pricing-card {
+        flex: 1;
+    }
+    
+    .footer-content {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+    
+    .detail-specs-grid {
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+    
+    .spec-box {
+        flex: 1;
+        min-width: calc(50% - 0.5rem);
+    }
+    
+    .trainer-card-large {
+        flex-direction: row;
+        align-items: center;
+    }
+    
+    .gallery-grid {
+        flex-direction: row;
+    }
+    
+    .gallery-item {
+        flex: 1;
+        height: 14rem;
+    }
+    
+    .profile-card-header {
+        flex-direction: row;
+        text-align: left;
+    }
+}
+
+/* Десктопы и большие экраны (ширина от 1024px) */
+@media (min-width: 1024px) {
+    .hero-title {
+        font-size: 2.8rem;
+    }
+    
+    .hero-visual img {
+        height: 26rem;
+    }
+    
+    .dance-card {
+        flex: 0 0 calc(33.333% - 1rem);
+    }
+    
+    .detail-layout-grid {
+        display: flex;
+        gap: 2rem;
+    }
+    
+    .detail-main-col {
+        flex: 2;
+    }
+    
+    .detail-side-col {
+        flex: 1;
+    }
+    
+    .profile-layout-grid {
+        display: flex;
+        gap: 2rem;
+    }
+    
+    .profile-main-col {
+        flex: 2;
+    }
+    
+    .profile-side-col {
+        flex: 1;
+    }
+}

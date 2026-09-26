@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Личный кабинет ученика — Black Heart Dance House (Притыцкого 62/м)</title>
+    <!-- 1. Сброс стилей браузера (CSS Reset) -->
+    <link rel="stylesheet" href="css/reset.css">
+    <!-- 2. Основные стили (Mobile First, Flexbox, rem/em/%/vw) -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Верхняя панель навигации (Семантический тег header) -->
+    <header class="detail-top-bar">
+        <a href="index.html" class="btn-back-link">
+            ← В каталог студии
+        </a>
+        <div style="font-size: 0.85rem; font-weight: 700; color: var(--accent-pink-light);">
+            Экран 3: Личный кабинет
+        </div>
+        <a href="detail.html" class="btn-back-link">
+            ✨ Направление
+        </a>
+    </header>
+
+    <!-- Основное содержимое личного кабинета (Семантический тег main) -->
+    <main class="container section">
+        <!-- Карточка профиля ученика (Flexbox) -->
+        <header class="profile-card-header">
+            <div class="profile-avatar-box">
+                <img src="assets/images/photo_dance_girl.jpg" alt="Дарья Каменецкая" class="profile-avatar-img">
+                <span class="profile-badge-vip">VIP</span>
+            </div>
+            <div style="display: flex; flex-direction: column; gap: 0.25rem;">
+                <h1 class="profile-name">Дарья Каменецкая</h1>
+                <div style="display: flex; gap: 0.5rem; justify-content: center; flex-wrap: wrap;">
+                    <span class="profile-id-tag">Клубная карта: #BH-391-DK</span>
+                    <span class="profile-id-tag" style="background: rgba(0, 230, 118, 0.15); color: var(--accent-emerald);">
+                        Статус: Активен
+                    </span>
+                </div>
+                <p style="font-size: 0.8rem; color: var(--color-text-muted); margin-top: 0.25rem;">
+                    Любимые направления: Exotic Pole Dance, High Heels
+                </p>
+            </div>
+        </header>
+
+        <!-- Виджеты быстрой статистики (Flexbox) -->
+        <div class="profile-stats-row">
+            <div class="stat-widget">
+                <span class="stat-widget-num">5 / 8</span>
+                <span class="stat-widget-label">Осталось тренировок</span>
+            </div>
+            <div class="stat-widget">
+                <span class="stat-widget-num">14 дн.</span>
+                <span class="stat-widget-label">Срок абонемента</span>
+            </div>
+            <div class="stat-widget">
+                <span class="stat-widget-num">28.5 BYN</span>
+                <span class="stat-widget-label">Накопленный кэшбэк</span>
+            </div>
+        </div>
+
+        <!-- Разметка на 2 колонки для десктопа (Flexbox) -->
+        <div class="profile-layout-grid">
+            <!-- Основная колонка: Предстоящие записи и история -->
+            <div class="profile-main-col">
+                <!-- Секция: Предстоящие тренировки (Семантический тег section) -->
+                <section style="margin-bottom: 2rem;">
+                    <h2 class="section-title">Мои запланированные тренировки</h2>
+                    <p class="section-subtitle">Отмена или перенос без сгорания занятия возможны не позднее чем за 3 часа до начала</p>
+
+                    <div class="schedule-list">
+                        <!-- Запись 1 -->
+                        <div class="schedule-row">
+                            <div class="schedule-time-badge">
+                                <span class="time-val">Пн, 18:30</span>
+                                <span class="hall-badge">Зал 1 (Пилоны)</span>
+                            </div>
+                            <div class="schedule-info">
+                                <img src="assets/images/avatar_alena.jpg" alt="Алёна Соколова" class="schedule-avatar">
+                                <div class="schedule-meta">
+                                    <span class="schedule-direction">Exotic Pole Dance (Связка)</span>
+                                    <span class="schedule-coach">Тренер: Алёна Соколова</span>
+                                </div>
+                            </div>
+                            <div class="schedule-action">
+                                <button class="btn-secondary btn-cancel-workout" style="font-size: 0.8rem; padding: 0.4rem 0.85rem;">
+                                    Отменить запись
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Запись 2 -->
+                        <div class="schedule-row">
+                            <div class="schedule-time-badge">
+                                <span class="time-val">Ср, 19:30</span>
+                                <span class="hall-badge">Зал 1 (Пилоны)</span>
+                            </div>
+                            <div class="schedule-info">
+                                <img src="assets/images/avatar_alena.jpg" alt="Алёна Соколова" class="schedule-avatar">
+                                <div class="schedule-meta">
+                                    <span class="schedule-direction">Exotic Flow & Партер</span>
+                                    <span class="schedule-coach">Тренер: Алёна Соколова</span>
+                                </div>
+                            </div>
+                            <div class="schedule-action">
+                                <button class="btn-secondary btn-cancel-workout" style="font-size: 0.8rem; padding: 0.4rem 0.85rem;">
+                                    Отменить запись
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Секция: История посещений (Семантический тег section) -->
+                <section style="margin-bottom: 2rem;">
+                    <h2 class="section-title">История посещений студии</h2>
+                    <div style="background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: var(--radius-md); overflow: hidden;">
+                        <table style="font-size: 0.85rem;">
+                            <thead style="background: var(--bg-surface); border-bottom: 1px solid var(--border-subtle);">
+                                <tr>
+                                    <th style="padding: 0.75rem 1rem; text-align: left; color: var(--color-text-muted);">Дата</th>
+                                    <th style="padding: 0.75rem 1rem; text-align: left; color: var(--color-text-muted);">Направление</th>
+                                    <th style="padding: 0.75rem 1rem; text-align: left; color: var(--color-text-muted);">Тренер</th>
+                                    <th style="padding: 0.75rem 1rem; text-align: right; color: var(--color-text-muted);">Статус</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr style="border-bottom: 1px solid rgba(255, 255, 255, 0.05);">
+                                    <td style="padding: 0.75rem 1rem; font-weight: 700;">14.09.2026</td>
+                                    <td style="padding: 0.75rem 1rem;">Exotic Pole Dance</td>
+                                    <td style="padding: 0.75rem 1rem; color: var(--color-text-muted);">А. Соколова</td>
+                                    <td style="padding: 0.75rem 1rem; text-align: right; color: var(--accent-emerald); font-weight: 600;">Посещено ✓</td>
+                                </tr>
+                                <tr style="border-bottom: 1px solid rgba(255, 255, 255, 0.05);">
+                                    <td style="padding: 0.75rem 1rem; font-weight: 700;">11.09.2026</td>
+                                    <td style="padding: 0.75rem 1rem;">High Heels Pro</td>
+                                    <td style="padding: 0.75rem 1rem; color: var(--color-text-muted);">К. Белова</td>
+                                    <td style="padding: 0.75rem 1rem; text-align: right; color: var(--accent-emerald); font-weight: 600;">Посещено ✓</td>
+                                </tr>
+                                <tr>
+                                    <td style="padding: 0.75rem 1rem; font-weight: 700;">07.09.2026</td>
+                                    <td style="padding: 0.75rem 1rem;">Stretching & Шпагат</td>
+                                    <td style="padding: 0.75rem 1rem; color: var(--color-text-muted);">А. Соколова</td>
+                                    <td style="padding: 0.75rem 1rem; text-align: right; color: var(--accent-emerald); font-weight: 600;">Посещено ✓</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+            </div>
+
+            <!-- Боковая колонка: Электронный пропуск QR и Продление -->
+            <aside class="profile-side-col">
+                <!-- Цифровой QR-пропуск на Притыцкого 62/м -->
+                <div class="qr-pass-card">
+                    <span style="font-size: 0.75rem; color: var(--accent-emerald); font-weight: 700;">
+                        🟢 ТУРНИКЕТ АКТИВИРОВАН
+                    </span>
+                    <h3 class="qr-pass-title">Электронный QR-пропуск</h3>
+                    <p class="qr-pass-desc">Приложите экран смартфона к сканеру на входе в студию (Притыцкого, 62/м)</p>
+                    
+                    <div class="qr-box">
+                        <!-- Векторный SVG QR-код пропуска -->
+                        <svg viewBox="0 0 100 100" fill="#000000" xmlns="http://www.w3.org/2000/svg">
+                            <rect width="100" height="100" fill="white"/>
+                            <!-- Угловые позиционные маркеры -->
+                            <rect x="5" y="5" width="30" height="30" fill="black"/>
+                            <rect x="10" y="10" width="20" height="20" fill="white"/>
+                            <rect x="15" y="15" width="10" height="10" fill="black"/>
+
+                            <rect x="65" y="5" width="30" height="30" fill="black"/>
+                            <rect x="70" y="10" width="20" height="20" fill="white"/>
+                            <rect x="75" y="15" width="10" height="10" fill="black"/>
+
+                            <rect x="5" y="65" width="30" height="30" fill="black"/>
+                            <rect x="10" y="70" width="20" height="20" fill="white"/>
+                            <rect x="15" y="75" width="10" height="10" fill="black"/>
+
+                            <!-- Паттерн данных карты #BH-391-DK -->
+                            <rect x="42" y="10" width="8" height="8" fill="black"/>
+                            <rect x="45" y="25" width="10" height="5" fill="black"/>
+                            <rect x="15" y="45" width="20" height="8" fill="black"/>
+                            <rect x="42" y="42" width="16" height="16" fill="#FF2A7A"/>
+                            <rect x="65" y="45" width="12" height="8" fill="black"/>
+                            <rect x="82" y="50" width="8" height="15" fill="black"/>
+                            <rect x="45" y="65" width="10" height="25" fill="black"/>
+                            <rect x="65" y="70" width="15" height="8" fill="black"/>
+                            <rect x="70" y="82" width="18" height="10" fill="black"/>
+                        </svg>
+                    </div>
+
+                    <div style="font-size: 0.75rem; color: var(--color-text-muted);">
+                        Код обновляется каждые 15 минут
+                    </div>
+                    <button class="btn-secondary" id="btnRefreshQr" style="font-size: 0.8rem; width: 100%;">
+                        🔄 Обновить пропуск
+                    </button>
+                </div>
+
+                <!-- Блок быстрого продления абонемента -->
+                <div class="calc-box">
+                    <h3 style="font-size: 1.15rem; font-weight: 800;">Продлить абонемент</h3>
+                    <p style="font-size: 0.8rem; color: var(--color-text-muted);">
+                        Продлите абонемент до 30.10.2026 и получите <strong>+1 тренировку в подарок</strong>!
+                    </p>
+                    <div style="display: flex; flex-direction: column; gap: 0.5rem;">
+                        <button class="btn-primary" style="width: 100%;" data-open-modal data-class="Продление: 8 занятий (175 BYN)">
+                            Продлить 8 занятий (175 BYN)
+                        </button>
+                        <button class="btn-secondary" style="width: 100%;" data-open-modal data-class="Продление: Безлимит (410 BYN)">
+                            Взять Безлимит (410 BYN)
+                        </button>
+                    </div>
+                </div>
+            </aside>
+        </div>
+    </main>
+
+    <!-- Подвал (Семантический тег footer) -->
+    <footer class="site-footer">
+        <div class="container footer-bottom" style="margin-top: 0; padding-top: 0; border-top: none;">
+            <p>© 2026 Black Heart Dance House • г. Минск, ул. Притыцкого, 62/м. Личный кабинет ученицы (Каменецкая Д., гр. т-391).</p>
+        </div>
+    </footer>
+
+    <!-- Модальное окно онлайн-записи -->
+    <div class="modal-backdrop" id="modalBackdrop">
+        <div class="modal-dialog">
+            <span class="modal-close-btn" id="modalClose">✕</span>
+            <h3 style="font-size: 1.25rem; font-weight: 800;">Продление абонемента</h3>
+            <p style="font-size: 0.825rem; color: var(--color-text-muted);">
+                Оплата через ЕРИП / Оплати / Банковской картой онлайн (BYN)
+            </p>
+            <form class="modal-form" id="bookingForm">
+                <div class="form-group">
+                    <label class="form-label">Выбранный тариф:</label>
+                    <input type="text" class="form-input" id="modalClassName" value="Продление абонемента" readonly>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">ФИО владельца абонемента:</label>
+                    <input type="text" class="form-input" id="bookName" value="Дарья Каменецкая" required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Контактный телефон:</label>
+                    <input type="tel" class="form-input" id="bookPhone" value="+375 (29) 987-65-43" required>
+                </div>
+                <button type="submit" class="btn-primary" style="margin-top: 0.5rem;">
+                    Оплатить и начислить занятия
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <div class="toast-msg" id="toastMsg"></div>
+    <script src="js/main.js"></script>
+</body>
+</html>

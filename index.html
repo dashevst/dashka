@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Black Heart Dance House — Школа танцев в Минске (Притыцкого 62/м)</title>
+    <!-- 1. Сброс стилей браузера (CSS Reset) -->
+    <link rel="stylesheet" href="css/reset.css">
+    <!-- 2. Основные стили (Mobile First, Flexbox, rem/em/%/vw) -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- 1. Шапка сайта и мобильная навигация (Семантический тег header) -->
+    <header class="site-header">
+        <div class="nav-container">
+            <a href="index.html" class="logo-link">
+                <div class="logo-badge">
+                    <img src="assets/images/card_heels.jpg" alt="Black Heart Logo">
+                </div>
+                <div class="logo-info">
+                    <span class="logo-title">BLACK HEART</span>
+                    <span class="logo-subtitle">DANCE HOUSE • МИНСК</span>
+                </div>
+            </a>
+
+            <!-- Кнопка-гамбургер для мобильных экранов -->
+            <button class="burger-btn" id="burgerBtn" aria-label="Открыть меню навигации">
+                <span class="burger-line"></span>
+                <span class="burger-line"></span>
+                <span class="burger-line"></span>
+            </button>
+
+            <!-- Меню навигации (Семантический тег nav) -->
+            <nav class="nav-menu" id="navMenu">
+                <a href="#catalog" class="nav-link active">🔥 Направления</a>
+                <a href="#schedule" class="nav-link">📅 Расписание</a>
+                <a href="#prices" class="nav-link">💳 Абонементы</a>
+                <a href="detail.html" class="nav-link">✨ О тренировке</a>
+                <a href="profile.html" class="nav-link">👤 Мой профиль</a>
+                <a href="#" class="nav-cta-btn" data-open-modal data-class="Пробное занятие">Записаться</a>
+            </nav>
+            <div class="nav-backdrop" id="navBackdrop"></div>
+        </div>
+    </header>
+
+    <!-- Основное содержимое веб-страницы (Семантический тег main) -->
+    <main>
+        <!-- Секция 1: Hero-баннер (Семантический тег section) -->
+        <section class="hero-section">
+            <div class="hero-wrapper">
+                <div class="hero-content">
+                    <div class="hero-badge-pill">
+                        <span>📍 г. Минск, ул. Притыцкого, 62/м</span>
+                    </div>
+                    <h1 class="hero-title">Танцуй ярко, чувствуй ритм <span>своего сердца</span></h1>
+                    <p class="hero-description">
+                        Премиальная студия танцев и пилонного искусства в 3 минутах от ст. м. Кунцевщина / Спортивная. 
+                        Профессиональные тренеры, топовые залы со световыми инсталляциями и авторские программы для любого уровня подготовки.
+                    </p>
+                    <div class="hero-address-card">
+                        <div class="hero-address-icon">🏛️</div>
+                        <div class="hero-address-text">
+                            <strong>Зал Black Heart Studio</strong>
+                            <span>ул. Притыцкого, 62/м (отдельный вход, парковка, душ)</span>
+                        </div>
+                    </div>
+                    <div class="hero-actions">
+                        <button class="btn-primary" data-open-modal data-class="Пробное занятие">
+                            🔥 Пробное занятие за 15 BYN
+                        </button>
+                        <a href="#catalog" class="btn-secondary">
+                            Смотреть направления ↓
+                        </a>
+                    </div>
+                </div>
+                <div class="hero-visual">
+                    <img src="assets/images/card_main_hall.jpg" alt="Главный зал Black Heart Dance House на Притыцкого 62/м">
+                    <div class="hero-visual-floating-badge">
+                        <div class="floating-badge-item">
+                            <span class="floating-badge-value">4 пилона</span>
+                            <span class="floating-badge-label">Проф. X-Pole</span>
+                        </div>
+                        <div class="floating-badge-item">
+                            <span class="floating-badge-value">150 м²</span>
+                            <span class="floating-badge-label">Площадь залов</span>
+                        </div>
+                        <div class="floating-badge-item">
+                            <span class="floating-badge-value">BYN</span>
+                            <span class="floating-badge-label">Цены в бел. рублях</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Секция 2: Каталог направлений (Семантический тег section & article) -->
+        <section class="section" id="catalog">
+            <div class="container">
+                <h2 class="section-title">Танцевальные направления</h2>
+                <p class="section-subtitle">Выберите стиль по душе: от грациозной пластики на каблуках до мощного уличного бита</p>
+
+                <!-- Фильтры категорий -->
+                <div class="filter-bar">
+                    <button class="filter-btn active" data-filter="all">Все направления</button>
+                    <button class="filter-btn" data-filter="pole">Exotic Pole</button>
+                    <button class="filter-btn" data-filter="heels">High Heels</button>
+                    <button class="filter-btn" data-filter="urban">Dancehall / Hip-Hop</button>
+                    <button class="filter-btn" data-filter="soft">Contemporary & Растяжка</button>
+                </div>
+
+                <!-- Карточки (Flexbox-сетка) -->
+                <div class="cards-grid">
+                    <!-- Карточка 1 -->
+                    <article class="dance-card" data-category="pole">
+                        <div class="card-img-wrapper">
+                            <img src="assets/images/card_vogue_clean.jpg" alt="Exotic Pole Dance">
+                            <span class="card-tag">Хит студии</span>
+                            <span class="card-level">С нуля</span>
+                        </div>
+                        <div class="card-body">
+                            <h3 class="card-title">Exotic Pole Dance</h3>
+                            <p class="card-desc">
+                                Гармоничное сочетание пилонных связок, чувственного партера и пластики тела. Укрепляет мышечный корсет и развивает уверенность в себе.
+                            </p>
+                            <div class="card-trainer">
+                                <img src="assets/images/avatar_alena.jpg" alt="Алена Соколова" class="trainer-avatar">
+                                <div class="trainer-info">
+                                    <span class="trainer-name">Алёна Соколова</span>
+                                    <span class="trainer-role">Топ-тренер, опыт 8 лет</span>
+                                </div>
+                            </div>
+                            <div class="card-footer">
+                                <div class="card-price-box">
+                                    <span class="card-price-label">Пробное занятие</span>
+                                    <span class="card-price-val">15 <span>BYN</span></span>
+                                </div>
+                                <a href="detail.html" class="btn-card-action">Подробнее →</a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Карточка 2 -->
+                    <article class="dance-card" data-category="heels">
+                        <div class="card-img-wrapper">
+                            <img src="assets/images/card_heels_clean.jpg" alt="High Heels">
+                            <span class="card-tag">Трендовый стиль</span>
+                            <span class="card-level">Все уровни</span>
+                        </div>
+                        <div class="card-body">
+                            <h3 class="card-title">High Heels Pro</h3>
+                            <p class="card-desc">
+                                Танец на высоких каблуках под топовые треки. Учит держать баланс, выразительно двигаться, красиво шагать и держать королевскую осанку.
+                            </p>
+                            <div class="card-trainer">
+                                <img src="assets/images/avatar_kristina.jpg" alt="Кристина Белова" class="trainer-avatar">
+                                <div class="trainer-info">
+                                    <span class="trainer-name">Кристина Белова</span>
+                                    <span class="trainer-role">Хореограф шоу-балетов</span>
+                                </div>
+                            </div>
+                            <div class="card-footer">
+                                <div class="card-price-box">
+                                    <span class="card-price-label">Пробное занятие</span>
+                                    <span class="card-price-val">15 <span>BYN</span></span>
+                                </div>
+                                <button class="btn-card-action" data-open-modal data-class="High Heels Pro">Записаться</button>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Карточка 3 -->
+                    <article class="dance-card" data-category="urban">
+                        <div class="card-img-wrapper">
+                            <img src="assets/images/card_hiphop_clean.jpg" alt="Dancehall & Hip-Hop">
+                            <span class="card-tag">Драйв & Энергия</span>
+                            <span class="card-level">Начинающие</span>
+                        </div>
+                        <div class="card-body">
+                            <h3 class="card-title">Dancehall Female & Beat</h3>
+                            <p class="card-desc">
+                                Горячие ямайские ритмы, прокач ягодиц, взрывная музыка и полное погружение в культуру дэнсхолла.
+                            </p>
+                            <div class="card-trainer">
+                                <img src="assets/images/avatar_mark.jpg" alt="Марк Воронов" class="trainer-avatar">
+                                <div class="trainer-info">
+                                    <span class="trainer-name">Марк Воронов</span>
+                                    <span class="trainer-role">Призер международных баттлов</span>
+                                </div>
+                            </div>
+                            <div class="card-footer">
+                                <div class="card-price-box">
+                                    <span class="card-price-label">Пробное занятие</span>
+                                    <span class="card-price-val">15 <span>BYN</span></span>
+                                </div>
+                                <button class="btn-card-action" data-open-modal data-class="Dancehall Female">Записаться</button>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Карточка 4 -->
+                    <article class="dance-card" data-category="soft">
+                        <div class="card-img-wrapper">
+                            <img src="assets/images/card_contemp_clean.jpg" alt="Contemporary Art">
+                            <span class="card-tag">Гармония & Баланс</span>
+                            <span class="card-level">Средний</span>
+                        </div>
+                        <div class="card-body">
+                            <h3 class="card-title">Contemporary Dance</h3>
+                            <p class="card-desc">
+                                Свобода самовыражения через дыхание, работу с полом (floorwork) и эмоциональную хореографию.
+                            </p>
+                            <div class="card-trainer">
+                                <img src="assets/images/avatar_daniil.jpg" alt="Даниил Коваль" class="trainer-avatar">
+                                <div class="trainer-info">
+                                    <span class="trainer-name">Даниил Коваль</span>
+                                    <span class="trainer-role">Педагог современного танца</span>
+                                </div>
+                            </div>
+                            <div class="card-footer">
+                                <div class="card-price-box">
+                                    <span class="card-price-label">Пробное занятие</span>
+                                    <span class="card-price-val">15 <span>BYN</span></span>
+                                </div>
+                                <button class="btn-card-action" data-open-modal data-class="Contemporary Dance">Записаться</button>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Карточка 5 -->
+                    <article class="dance-card" data-category="soft">
+                        <div class="card-img-wrapper">
+                            <img src="assets/images/class_contemporary.jpg" alt="Stretching & Здоровая спина">
+                            <span class="card-tag">Здоровье</span>
+                            <span class="card-level">Все уровни</span>
+                        </div>
+                        <div class="card-body">
+                            <h3 class="card-title">Stretching & Шпагат</h3>
+                            <p class="card-desc">
+                                Мягкая и безопасная растяжка для всех групп мышц. Помогает сесть на продольный и поперечный шпагаты без боли и травм.
+                            </p>
+                            <div class="card-trainer">
+                                <img src="assets/images/avatar_alena.jpg" alt="Алена Соколова" class="trainer-avatar">
+                                <div class="trainer-info">
+                                    <span class="trainer-name">Алёна Соколова</span>
+                                    <span class="trainer-role">Сертифицированный тренер</span>
+                                </div>
+                            </div>
+                            <div class="card-footer">
+                                <div class="card-price-box">
+                                    <span class="card-price-label">Пробное занятие</span>
+                                    <span class="card-price-val">15 <span>BYN</span></span>
+                                </div>
+                                <button class="btn-card-action" data-open-modal data-class="Stretching & Шпагат">Записаться</button>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Карточка 6 -->
+                    <article class="dance-card" data-category="urban">
+                        <div class="card-img-wrapper">
+                            <img src="assets/images/card_asia.jpg" alt="K-Pop Cover Dance">
+                            <span class="card-tag">Популярное</span>
+                            <span class="card-level">С нуля</span>
+                        </div>
+                        <div class="card-body">
+                            <h3 class="card-title">K-Pop Cover Dance</h3>
+                            <p class="card-desc">
+                                Разучивание оригинальной хореографии любимых корейских айдолов (Blackpink, BTS, Stray Kids, NewJeans) со съемкой клипов.
+                            </p>
+                            <div class="card-trainer">
+                                <img src="assets/images/avatar_kristina.jpg" alt="Кристина Белова" class="trainer-avatar">
+                                <div class="trainer-info">
+                                    <span class="trainer-name">Кристина Белова</span>
+                                    <span class="trainer-role">Куратор кавер-команд</span>
+                                </div>
+                            </div>
+                            <div class="card-footer">
+                                <div class="card-price-box">
+                                    <span class="card-price-label">Пробное занятие</span>
+                                    <span class="card-price-val">15 <span>BYN</span></span>
+                                </div>
+                                <button class="btn-card-action" data-open-modal data-class="K-Pop Cover Dance">Записаться</button>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- Секция 3: Интерактивное недельное расписание (Семантический тег section) -->
+        <section class="section" id="schedule" style="background: #111111;">
+            <div class="container">
+                <h2 class="section-title">Расписание тренировок</h2>
+                <p class="section-subtitle">Филиал на ул. Притыцкого, 62/м. Выберите день недели для просмотра активных групп:</p>
+
+                <!-- Табы дней недели -->
+                <div class="schedule-days-bar">
+                    <button class="day-tab-btn active" data-day="all">
+                        <span class="day-tab-name">Все дни</span>
+                        <span class="day-tab-date">Пн-Вс</span>
+                    </button>
+                    <button class="day-tab-btn" data-day="mon">
+                        <span class="day-tab-name">Понедельник</span>
+                        <span class="day-tab-date">ПН</span>
+                    </button>
+                    <button class="day-tab-btn" data-day="tue">
+                        <span class="day-tab-name">Вторник</span>
+                        <span class="day-tab-date">ВТ</span>
+                    </button>
+                    <button class="day-tab-btn" data-day="wed">
+                        <span class="day-tab-name">Среда</span>
+                        <span class="day-tab-date">СР</span>
+                    </button>
+                    <button class="day-tab-btn" data-day="thu">
+                        <span class="day-tab-name">Четверг</span>
+                        <span class="day-tab-date">ЧТ</span>
+                    </button>
+                    <button class="day-tab-btn" data-day="fri">
+                        <span class="day-tab-name">Пятница</span>
+                        <span class="day-tab-date">ПТ</span>
+                    </button>
+                    <button class="day-tab-btn" data-day="sat">
+                        <span class="day-tab-name">Суббота</span>
+                        <span class="day-tab-date">СБ</span>
+                    </button>
+                </div>
+
+                <!-- Список занятий (Flexbox) -->
+                <div class="schedule-list">
+                    <div class="schedule-row" data-day="mon">
+                        <div class="schedule-time-badge">
+                            <span class="time-val">18:30 – 19:30</span>
+                            <span class="hall-badge">Зал 1 (Пилоны)</span>
+                        </div>
+                        <div class="schedule-info">
+                            <img src="assets/images/avatar_alena.jpg" alt="Алена Соколова" class="schedule-avatar">
+                            <div class="schedule-meta">
+                                <span class="schedule-direction">Exotic Pole Dance (Базовый)</span>
+                                <span class="schedule-coach">Тренер: Алёна Соколова</span>
+                            </div>
+                        </div>
+                        <div class="schedule-action">
+                            <span class="spots-left">3 места свободно</span>
+                            <button class="btn-card-action" data-open-modal data-class="Пн 18:30 Exotic Pole">Занять место</button>
+                        </div>
+                    </div>
+
+                    <div class="schedule-row" data-day="mon">
+                        <div class="schedule-time-badge">
+                            <span class="time-val">20:00 – 21:00</span>
+                            <span class="hall-badge">Зал 2 (Зеркальный)</span>
+                        </div>
+                        <div class="schedule-info">
+                            <img src="assets/images/avatar_kristina.jpg" alt="Кристина Белова" class="schedule-avatar">
+                            <div class="schedule-meta">
+                                <span class="schedule-direction">High Heels Choreo</span>
+                                <span class="schedule-coach">Тренер: Кристина Белова</span>
+                            </div>
+                        </div>
+                        <div class="schedule-action">
+                            <span class="spots-left">2 места свободно</span>
+                            <button class="btn-card-action" data-open-modal data-class="Пн 20:00 High Heels">Занять место</button>
+                        </div>
+                    </div>
+
+                    <div class="schedule-row" data-day="tue">
+                        <div class="schedule-time-badge">
+                            <span class="time-val">19:00 – 20:00</span>
+                            <span class="hall-badge">Зал 1 (Urban)</span>
+                        </div>
+                        <div class="schedule-info">
+                            <img src="assets/images/avatar_mark.jpg" alt="Марк Воронов" class="schedule-avatar">
+                            <div class="schedule-meta">
+                                <span class="schedule-direction">Dancehall Female Pro</span>
+                                <span class="schedule-coach">Тренер: Марк Воронов</span>
+                            </div>
+                        </div>
+                        <div class="schedule-action">
+                            <span class="spots-left">5 мест свободно</span>
+                            <button class="btn-card-action" data-open-modal data-class="Вт 19:00 Dancehall">Занять место</button>
+                        </div>
+                    </div>
+
+                    <div class="schedule-row" data-day="wed">
+                        <div class="schedule-time-badge">
+                            <span class="time-val">19:30 – 20:30</span>
+                            <span class="hall-badge">Зал 1 (Пилоны)</span>
+                        </div>
+                        <div class="schedule-info">
+                            <img src="assets/images/avatar_alena.jpg" alt="Алена Соколова" class="schedule-avatar">
+                            <div class="schedule-meta">
+                                <span class="schedule-direction">Exotic Flow & Партер</span>
+                                <span class="schedule-coach">Тренер: Алёна Соколова</span>
+                            </div>
+                        </div>
+                        <div class="schedule-action">
+                            <span class="spots-left">1 место свободно</span>
+                            <button class="btn-card-action" data-open-modal data-class="Ср 19:30 Exotic Flow">Занять место</button>
+                        </div>
+                    </div>
+
+                    <div class="schedule-row" data-day="thu">
+                        <div class="schedule-time-badge">
+                            <span class="time-val">18:30 – 19:30</span>
+                            <span class="hall-badge">Зал 2 (Soft)</span>
+                        </div>
+                        <div class="schedule-info">
+                            <img src="assets/images/avatar_daniil.jpg" alt="Даниил Коваль" class="schedule-avatar">
+                            <div class="schedule-meta">
+                                <span class="schedule-direction">Contemporary Floorwork</span>
+                                <span class="schedule-coach">Тренер: Даниил Коваль</span>
+                            </div>
+                        </div>
+                        <div class="schedule-action">
+                            <span class="spots-left">4 места свободно</span>
+                            <button class="btn-card-action" data-open-modal data-class="Чт 18:30 Contemporary">Занять место</button>
+                        </div>
+                    </div>
+
+                    <div class="schedule-row" data-day="fri">
+                        <div class="schedule-time-badge">
+                            <span class="time-val">20:00 – 21:00</span>
+                            <span class="hall-badge">Зал 2 (Зеркальный)</span>
+                        </div>
+                        <div class="schedule-info">
+                            <img src="assets/images/avatar_kristina.jpg" alt="Кристина Белова" class="schedule-avatar">
+                            <div class="schedule-meta">
+                                <span class="schedule-direction">High Heels Weekend Vibe</span>
+                                <span class="schedule-coach">Тренер: Кристина Белова</span>
+                            </div>
+                        </div>
+                        <div class="schedule-action">
+                            <span class="spots-left">Мест нет (Лист ожидания)</span>
+                            <button class="btn-card-action" data-open-modal data-class="Пт 20:00 Heels Vibe">Лист ожидания</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Секция 4: Абонементы и калькулятор цен (Семантический тег section) -->
+        <section class="section" id="prices">
+            <div class="container">
+                <h2 class="section-title">Тарифные планы в белорусских рублях (BYN)</h2>
+                <p class="section-subtitle">Гибкая система абонементов без скрытых доплат. Действуют на все направления студии!</p>
+
+                <!-- Сетка тарифов (Flexbox) -->
+                <div class="pricing-grid">
+                    <!-- Тариф 1 -->
+                    <div class="pricing-card">
+                        <div class="pricing-card-header">
+                            <h3 class="pricing-name">Разовое / Пробное</h3>
+                            <p class="pricing-desc">Для первого знакомства со студией</p>
+                        </div>
+                        <div class="pricing-cost-box">
+                            <span class="pricing-amount">25</span>
+                            <span class="pricing-currency">BYN</span>
+                        </div>
+                        <div class="pricing-features">
+                            <div class="feature-item">1 любое занятие в расписании</div>
+                            <div class="feature-item">Аренда наколенников / коврика</div>
+                            <div class="feature-item">Срок действия 7 дней</div>
+                        </div>
+                        <button class="btn-secondary" data-open-modal data-class="Разовое занятие">Выбрать тариф</button>
+                    </div>
+
+                    <!-- Тариф 2 -->
+                    <div class="pricing-card">
+                        <div class="pricing-card-header">
+                            <h3 class="pricing-name">Абонемент 4 занятия</h3>
+                            <p class="pricing-desc">1 раз в неделю для поддержания формы</p>
+                        </div>
+                        <div class="pricing-cost-box">
+                            <span class="pricing-amount">120</span>
+                            <span class="pricing-currency">BYN</span>
+                        </div>
+                        <div class="pricing-features">
+                            <div class="feature-item">4 тренировки (30 BYN за урок)</div>
+                            <div class="feature-item">Срок действия 30 календарных дней</div>
+                            <div class="feature-item">Возможность 1 заморозки на 7 дней</div>
+                        </div>
+                        <button class="btn-secondary" data-open-modal data-class="Абонемент 4 занятия">Выбрать тариф</button>
+                    </div>
+
+                    <!-- Тариф 3 (Популярный) -->
+                    <div class="pricing-card featured">
+                        <span class="pricing-badge-popular">Самый выгодный</span>
+                        <div class="pricing-card-header">
+                            <h3 class="pricing-name">Абонемент 8 занятий</h3>
+                            <p class="pricing-desc">Оптимальный курс 2 раза в неделю</p>
+                        </div>
+                        <div class="pricing-cost-box">
+                            <span class="pricing-amount">175</span>
+                            <span class="pricing-currency">BYN</span>
+                        </div>
+                        <div class="pricing-features">
+                            <div class="feature-item">8 тренировок (всего 21.8 BYN за урок)</div>
+                            <div class="feature-item">Действие 30 дней на любые стили</div>
+                            <div class="feature-item">2 заморозки по 7 дней</div>
+                            <div class="feature-item">Бесплатный видеоотчет связки</div>
+                        </div>
+                        <button class="btn-primary" data-open-modal data-class="Абонемент 8 занятий">Оформить абонемент</button>
+                    </div>
+
+                    <!-- Тариф 4 -->
+                    <div class="pricing-card">
+                        <div class="pricing-card-header">
+                            <h3 class="pricing-name">Безлимит 1 месяц</h3>
+                            <p class="pricing-desc">Для максимального погружения в танец</p>
+                        </div>
+                        <div class="pricing-cost-box">
+                            <span class="pricing-amount">410</span>
+                            <span class="pricing-currency">BYN</span>
+                        </div>
+                        <div class="pricing-features">
+                            <div class="feature-item">Неограниченное число тренировок</div>
+                            <div class="feature-item">Доступ ко всем группам и залам</div>
+                            <div class="feature-item">Приоритетная бронь пилонов</div>
+                        </div>
+                        <button class="btn-secondary" data-open-modal data-class="Безлимит 1 месяц">Выбрать тариф</button>
+                    </div>
+                </div>
+
+                <!-- Интерактивный калькулятор абонемента -->
+                <div style="margin-top: 2rem;">
+                    <div class="calc-box">
+                        <h3 style="font-size: 1.15rem; font-weight: 800;">🧮 Интерактивный калькулятор стоимости</h3>
+                        <div class="calc-control-group">
+                            <label class="calc-label">Выберите количество тренировок в месяц:</label>
+                            <div class="calc-chips">
+                                <button class="calc-chip-btn" data-lessons="4">4 занятия (120 BYN)</button>
+                                <button class="calc-chip-btn active" data-lessons="8">8 занятий (175 BYN)</button>
+                                <button class="calc-chip-btn" data-lessons="12">12 занятий (240 BYN)</button>
+                                <button class="calc-chip-btn" data-lessons="unlim">Безлимит (410 BYN)</button>
+                            </div>
+                        </div>
+
+                        <div class="calc-control-group">
+                            <label style="display: flex; align-items: center; gap: 0.6rem; cursor: pointer; font-size: 0.9rem;">
+                                <input type="checkbox" id="studentDiscount" style="width: 1.1rem; height: 1.1rem; accent-color: var(--accent-pink);">
+                                <span>Я студент дневного отделения (скидка 10% по студенческому билету)</span>
+                            </label>
+                        </div>
+
+                        <div class="calc-result-box">
+                            <div>
+                                <span class="calc-result-label">Итоговая стоимость:</span>
+                                <div style="font-size: 0.75rem; color: var(--color-text-dim);">Фиксируется на весь период обучения</div>
+                            </div>
+                            <span class="calc-result-val" id="calcTotalVal">175 BYN</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Подвал приложения (Семантический тег footer) -->
+    <footer class="site-footer">
+        <div class="footer-content">
+            <div class="footer-col" style="flex: 1.5;">
+                <div class="logo-link">
+                    <div class="logo-badge">
+                        <img src="assets/images/card_heels.jpg" alt="Black Heart">
+                    </div>
+                    <div class="logo-info">
+                        <span class="logo-title">BLACK HEART DANCE HOUSE</span>
+                        <span class="logo-subtitle">Минск • Притыцкого 62/м</span>
+                    </div>
+                </div>
+                <p style="color: var(--color-text-muted); font-size: 0.85rem; margin-top: 0.5rem;">
+                    Пространство женственности, уверенности и танцевального искусства. Развиваем пластику, ритм и грацию в атмосфере поддержки и вдохновения.
+                </p>
+            </div>
+
+            <div class="footer-col">
+                <h4 class="footer-title">Навигация</h4>
+                <div class="footer-links">
+                    <a href="index.html">Каталог направлений</a>
+                    <a href="detail.html">Детализация Exotic Pole</a>
+                    <a href="profile.html">Личный кабинет ученика</a>
+                    <a href="#schedule">Расписание занятий</a>
+                    <a href="#prices">Абонементы (BYN)</a>
+                </div>
+            </div>
+
+            <div class="footer-col">
+                <h4 class="footer-title">Контакты и локация</h4>
+                <div class="footer-links">
+                    <span>📍 г. Минск, ул. Притыцкого, 62/м</span>
+                    <span>🚇 ст. м. Кунцевщина / Спортивная</span>
+                    <span>📞 +375 (29) 834-12-90</span>
+                    <span>⏰ Пн–Вс: 09:00 – 22:30</span>
+                    <a href="https://instagram.com" target="_blank">📸 Instagram: @blackheart_dance</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>© 2026 Black Heart Dance House. Лабораторная работа №5. Студентка: Каменецкая Дарья (гр. т-391).</p>
+        </div>
+    </footer>
+
+    <!-- Модальное окно онлайн-записи -->
+    <div class="modal-backdrop" id="modalBackdrop">
+        <div class="modal-dialog">
+            <span class="modal-close-btn" id="modalClose">✕</span>
+            <h3 style="font-size: 1.25rem; font-weight: 800;">Онлайн-запись на тренировку</h3>
+            <p style="font-size: 0.825rem; color: var(--color-text-muted);">
+                Заполните форму, и наш администратор подтвердит вашу бронь в течение 10 минут.
+            </p>
+            <form class="modal-form" id="bookingForm">
+                <div class="form-group">
+                    <label class="form-label">Направление / Занятие:</label>
+                    <input type="text" class="form-input" id="modalClassName" readonly>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Ваше имя:</label>
+                    <input type="text" class="form-input" id="bookName" placeholder="Дарья" required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Номер телефона (РБ):</label>
+                    <input type="tel" class="form-input" id="bookPhone" placeholder="+375 (29) 123-45-67" required>
+                </div>
+                <button type="submit" class="btn-primary" style="margin-top: 0.5rem;">
+                    Подтвердить запись
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Всплывающий тост-уведомление -->
+    <div class="toast-msg" id="toastMsg"></div>
+
+    <!-- 3. Основной JS-файл -->
+    <script src="js/main.js"></script>
+</body>
+</html>

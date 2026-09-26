@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Exotic Pole Dance — Black Heart Dance House (Притыцкого 62/м)</title>
+    <!-- 1. Сброс стилей браузера (CSS Reset) -->
+    <link rel="stylesheet" href="css/reset.css">
+    <!-- 2. Основные стили (Mobile First, Flexbox, rem/em/%/vw) -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Верхняя панель навигации (Семантический тег header) -->
+    <header class="detail-top-bar">
+        <a href="index.html" class="btn-back-link">
+            ← В каталог направлений
+        </a>
+        <div style="font-size: 0.85rem; font-weight: 700; color: var(--color-text-muted);">
+            Экран 2: Детализация
+        </div>
+        <a href="profile.html" class="btn-back-link">
+            👤 Личный кабинет
+        </a>
+    </header>
+
+    <!-- Основной контент страницы детального просмотра (Семантический тег main) -->
+    <main>
+        <!-- Hero-баннер направления с реальным фото студии -->
+        <section class="detail-hero-banner">
+            <img src="assets/images/class_detail_hero.jpg" alt="Exotic Pole Dance в зале Black Heart на Притыцкого 62/м">
+            <div class="detail-hero-overlay">
+                <div class="detail-tags-row">
+                    <span class="card-tag">👑 Хит студии</span>
+                    <span class="card-level">Уровень: С нуля и Pro</span>
+                    <span class="card-level" style="background: rgba(255, 42, 122, 0.4);">1 пилон = 1 ученица</span>
+                </div>
+                <h1 class="detail-title">Exotic Pole Dance</h1>
+                <p style="color: var(--color-text-muted); font-size: 0.9rem;">
+                    Искусство грации, силы и чувственной хореографии около пилона и в партере.
+                </p>
+            </div>
+        </section>
+
+        <div class="container section">
+            <!-- Особенности занятия (Flexbox) -->
+            <div class="detail-specs-grid">
+                <div class="spec-box">
+                    <div class="spec-icon">⏱️</div>
+                    <div class="spec-info">
+                        <h4>Длительность урока</h4>
+                        <p>60 минут (интенсив)</p>
+                    </div>
+                </div>
+                <div class="spec-box">
+                    <div class="spec-icon">🩰</div>
+                    <div class="spec-info">
+                        <h4>Форма одежды</h4>
+                        <p>Лосины/шорты, носочки / стрипы</p>
+                    </div>
+                </div>
+                <div class="spec-box">
+                    <div class="spec-icon">💰</div>
+                    <div class="spec-info">
+                        <h4>Пробный урок</h4>
+                        <p>15 BYN (вместо 25 BYN)</p>
+                    </div>
+                </div>
+                <div class="spec-box">
+                    <div class="spec-icon">👥</div>
+                    <div class="spec-info">
+                        <h4>Формат группы</h4>
+                        <p>Мини-группа до 6 человек</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Разметка на две колонки на десктопе через Flexbox -->
+            <div class="detail-layout-grid">
+                <!-- Основная колонка с описанием, тренером и галереей -->
+                <div class="detail-main-col">
+                    <!-- Описание направления (Семантический тег section) -->
+                    <section style="margin-bottom: 2rem;">
+                        <h2 class="section-title">О направлении и программе курса</h2>
+                        <p style="color: var(--color-text-muted); line-height: 1.7; margin-bottom: 1rem;">
+                            <strong>Exotic Pole Dance</strong> — это самое популярное танцевальное направление в нашей студии на ул. Притыцкого, 62/м. 
+                            Оно объединяет акробатические связки на пилоне (статичном и вращающемся), эффектный партер (танец на полу), 
+                            волновые движения корпуса и музыкальную выразительность.
+                        </p>
+                        <p style="color: var(--color-text-muted); line-height: 1.7; margin-bottom: 1.25rem;">
+                            Занятия построены по методике безопасного прогресса: мы начинаем с разминки и суставной гимнастики, 
+                            затем разбираем базовые крутки и переходы, учим красивую связку месяца и завершаем урок расслабляющей растяжкой.
+                        </p>
+
+                        <div style="background: var(--bg-surface); border-left: 3px solid var(--accent-pink); padding: 1rem; border-radius: 0 var(--radius-md) var(--radius-md) 0;">
+                            <h4 style="font-size: 0.95rem; font-weight: 700; color: var(--accent-pink-light); margin-bottom: 0.35rem;">
+                                💡 Что вы получите уже после 1 месяца регулярных тренировок:
+                            </h4>
+                            <ul style="list-style: disc; padding-left: 1.25rem; color: var(--color-text-muted); font-size: 0.85rem; line-height: 1.6;">
+                                <li>Подтянутый рельеф рук, пресса и ягодиц без утомительных тренажеров.</li>
+                                <li>Королевскую осанку, мягкую пластику рук и плавность походки.</li>
+                                <li>Готовую танцевальную видео-связку в профессиональном свете нашего зала.</li>
+                                <li>Уверенность в своей привлекательности и женской энергии.</li>
+                            </ul>
+                        </div>
+                    </section>
+
+                    <!-- Профиль ведущего тренера направления (Семантический тег section) -->
+                    <section style="margin-bottom: 2rem;">
+                        <h2 class="section-title">Ведущий хореограф направления</h2>
+                        <div class="trainer-card-large">
+                            <div class="trainer-header-row">
+                                <img src="assets/images/avatar_alena.jpg" alt="Алена Соколова" class="trainer-avatar-large">
+                                <div class="trainer-large-info">
+                                    <h3>Алёна Соколова</h3>
+                                    <p>Топ-инструктор по Exotic Pole & Stretching</p>
+                                    <span style="font-size: 0.75rem; color: var(--color-text-dim); display: block; margin-top: 0.25rem;">
+                                        Опыт преподавания: 8 лет • Сертифицированный судья
+                                    </span>
+                                </div>
+                            </div>
+                            <div style="font-size: 0.85rem; color: var(--color-text-muted); line-height: 1.6;">
+                                «Моя главная цель на тренировке — чтобы каждая ученица почувствовала себя богиней, независимо от уровня начальной подготовки и возраста. 
+                                Мы двигаемся в кайф, без критики и сравнений, шаг за шагом открывая новую грань вашей силы и красоты.»
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Фотогалерея зала и тренировок (Семантический тег section) -->
+                    <section style="margin-bottom: 2rem;">
+                        <h2 class="section-title">Фотогалерея из зала студии (Притыцкого 62/м)</h2>
+                        <p class="section-subtitle">Атмосфера наших тренировок, профессиональное оборудование X-Pole и неоновый свет</p>
+                        <div class="gallery-grid">
+                            <figure class="gallery-item">
+                                <img src="assets/images/card_main_hall.jpg" alt="Главный зал Black Heart">
+                            </figure>
+                            <figure class="gallery-item">
+                                <img src="assets/images/dance_crew.jpg" alt="Команда учениц и тренеров">
+                            </figure>
+                            <figure class="gallery-item">
+                                <img src="assets/images/class_vogue.jpg" alt="Тренировочный процесс">
+                            </figure>
+                        </div>
+                    </section>
+                </div>
+
+                <!-- Боковая колонка с формой записи и расписанием группы -->
+                <aside class="detail-side-col">
+                    <!-- Карточка быстрой записи на пробный урок -->
+                    <div class="calc-box" style="position: sticky; top: 5rem; border-color: var(--border-accent);">
+                        <span class="pricing-badge-popular" style="position: static; align-self: flex-start; margin-bottom: 0.5rem;">
+                            Спецпредложение
+                        </span>
+                        <h3 style="font-size: 1.3rem; font-weight: 800;">Записаться на Exotic Pole</h3>
+                        <p style="font-size: 0.85rem; color: var(--color-text-muted);">
+                            Пробный урок всего <strong>15 BYN</strong>. Если покупаете абонемент в день занятия — пробное бесплатно!
+                        </p>
+                        
+                        <div style="background: var(--bg-card); padding: 0.85rem; border-radius: var(--radius-sm);">
+                            <div style="font-size: 0.8rem; color: var(--color-text-muted);">Ближайшая группа для начинающих:</div>
+                            <div style="font-size: 1.1rem; font-weight: 800; color: var(--accent-pink-light); margin-top: 0.2rem;">
+                                Понедельник, 18:30 – 19:30
+                            </div>
+                            <div style="font-size: 0.75rem; color: var(--accent-emerald); font-weight: 600; margin-top: 0.2rem;">
+                                🟢 Свободно 3 пилона
+                            </div>
+                        </div>
+
+                        <button class="btn-primary" data-open-modal data-class="Exotic Pole (Пн 18:30)" style="width: 100%;">
+                            Забронировать пилон
+                        </button>
+                        <a href="profile.html" class="btn-secondary" style="width: 100%; text-align: center;">
+                            Открыть мой абонемент
+                        </a>
+                    </div>
+                </aside>
+            </div>
+        </div>
+    </main>
+
+    <!-- Подвал приложения (Семантический тег footer) -->
+    <footer class="site-footer">
+        <div class="container footer-bottom" style="margin-top: 0; padding-top: 0; border-top: none;">
+            <p>© 2026 Black Heart Dance House • Минск, ул. Притыцкого, 62/м. Лабораторная работа №5 (Каменецкая Дарья, т-391).</p>
+        </div>
+    </footer>
+
+    <!-- Модальное окно онлайн-записи -->
+    <div class="modal-backdrop" id="modalBackdrop">
+        <div class="modal-dialog">
+            <span class="modal-close-btn" id="modalClose">✕</span>
+            <h3 style="font-size: 1.25rem; font-weight: 800;">Бронирование места на Exotic Pole</h3>
+            <p style="font-size: 0.825rem; color: var(--color-text-muted);">
+                г. Минск, ул. Притыцкого, 62/м (ст. м. Кунцевщина / Спортивная)
+            </p>
+            <form class="modal-form" id="bookingForm">
+                <div class="form-group">
+                    <label class="form-label">Выбранная группа:</label>
+                    <input type="text" class="form-input" id="modalClassName" value="Exotic Pole Dance" readonly>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Ваше имя:</label>
+                    <input type="text" class="form-input" id="bookName" placeholder="Дарья" required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Номер телефона (РБ):</label>
+                    <input type="tel" class="form-input" id="bookPhone" placeholder="+375 (29) 123-45-67" required>
+                </div>
+                <button type="submit" class="btn-primary" style="margin-top: 0.5rem;">
+                    Подтвердить бронирование (15 BYN)
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <div class="toast-msg" id="toastMsg"></div>
+    <script src="js/main.js"></script>
+</body>
+</html>
